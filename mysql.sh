@@ -5,6 +5,7 @@ scriptName=$(echo $0 | cut -d "." -f1)
 logFile=/tmp/$scriptName-$timeStamp.log
 R="\e[31m"
 G="\e[32m"
+Y="\e[33m"
 N="\e[0m"
 
 if [ $userid -ne 0 ]
@@ -25,14 +26,14 @@ validate(){
     fi
 }
 
-dnf install mysql-server -y &>>$LOGFILE
-VALIDATE $? "Installing MySQL Server"
+dnf install mysql-server -y &>>$logFile
+validate $? "Installing MySQL Server"
 
-systemctl enable mysqld &>>$LOGFILE
-VALIDATE $? "Enabling MySQL Server"
+systemctl enable mysqld &>>$logFile
+validate $? "Enabling MySQL Server"
 
-systemctl start mysqld &>>$LOGFILE
-VALIDATE $? "Starting MySQL Server"
+systemctl start mysqld &>>$logFile
+validate $? "Starting MySQL Server"
 
-mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$LOGFILE
-VALIDATE $? "Setting up root password"
+mysql_secure_installation --set-root-pass ExpenseApp@1 &>>$logFile
+validate $? "Setting up root password"
