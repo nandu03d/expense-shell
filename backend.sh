@@ -33,7 +33,7 @@ dnf module enable nodejs:20 -y &>>$logFile
 validate $? "Enabling nodejs:20 version"
 
 dnf install nodejs -y &>>$logFile
-validate $? "Installing nodejs
+validate $? "Installing nodejs"
 
 id expense &>>$logFile
 if [ $? -ne 0 ]
