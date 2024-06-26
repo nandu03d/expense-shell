@@ -76,7 +76,7 @@ validate $? "Enabling backend"
 dnf install mysql -y &>>$logFile
 validate $? "Installing MySQL Client"
 
-mysql -h db.daws78s.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$logFile
+mysql -h db.expdev-1.online -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>$logFile
 validate $? "Schema loading"
 
 systemctl restart backend &>>$logFile
