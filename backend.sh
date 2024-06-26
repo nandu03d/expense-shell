@@ -50,7 +50,7 @@ mkdir -p /app &>>$logFile
 validate $? "Creating app directory"
 
 curl -o /tmp/backend.zip https://expense-builds.s3.us-east-1.amazonaws.com/expense-backend-v2.zip &>>$logFile
-VALIDATE $? "Downloading backend code"
+validate $? "Downloading backend code"
 
 cd /app
 rm -rf /app/*
