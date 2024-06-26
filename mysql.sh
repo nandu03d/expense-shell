@@ -41,7 +41,7 @@ validate $? "Starting MySQL Server"
 # validate $? "Setting up root password"
 
 #Below code will be useful for idempotent nature
-mysql -h 44.210.118.52 -uroot -p${mysql_root_password} -e 'show databases;' &>>$logFile
+mysql -h db.expdev-1.online -uroot -p${mysql_root_password} -e 'show databases;' &>>$logFile #db.expdev-1 is db ip address
 if [ $? -ne 0 ]
 then
     mysql_secure_installation --set-root-pass ${mysql_root_password} &>>$logFile
